@@ -81,19 +81,28 @@ namespace Lab_Work
             }
             return value2;
         }
+        static int Fibon(int numberval)
+        {
+            if (numberval == 1 || numberval == 2)
+            {
+                return 1;
+            }
+
+            return Fibon(numberval - 1) + Fibon(numberval - 2);
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Задание 1.\n");
-            Console.WriteLine("Задание 2.\n");
-            Console.WriteLine("Задание 3.\n");
-            Console.WriteLine("Задание 4.\n");
-            Console.WriteLine("Задание 5.\n");
-            Console.WriteLine("Задание 6.\n");
+            Console.WriteLine("Задание 1.\nНаписать метод, возвращающий наибольшее из двух чисел.");
+            Console.WriteLine("\nЗадание 2.\nНаписать метод, который меняет местами значения двух передаваемых параметров.");
+            Console.WriteLine("\nЗадание 3.\nНаписать метод вычисления факториала числа.");
+            Console.WriteLine("\nЗадание 4.\nНаписать рекурсивный метод вычисления факториала числа.");
+            Console.WriteLine("\nЗадание 5.\nНаписать метод, который вычисляет НОД двух, трёх натуральных чисел.");
+            Console.WriteLine("\nЗадание 6.\nНаписать рекурсивный метод, вычисляющий значение n-го числа ряда Фибоначчи.");
 
             bool flag = true;
             while (flag)
             {
-                Console.Write("\nВведите номер следующего задания или break для выхода: ");
+                Console.Write("\nВведите номер задания для проверки или break для выхода из приложения: ");
                 string number = Console.ReadLine();
                 switch (number)
                 {
@@ -110,7 +119,7 @@ namespace Lab_Work
                         Console.Write("Введите второе целое число: ");
                         int.TryParse(Console.ReadLine(), out value2);
                         Reverse(ref value1, ref value2);
-                        Console.WriteLine($"Первое число — {value1};\nВторое число — {value2}");
+                        Console.WriteLine($"Первое число — {value1}\nВторое число — {value2}");
                         break;
                     case "3":
                         Console.Write("Введите первое целое число: ");
@@ -141,6 +150,25 @@ namespace Lab_Work
                         Console.WriteLine($"НОД({int1}, {int2}, {int3}) = {GCD(int1, int2, int3)}");
                         break;
                     case "6":
+                        int number_value, fibonnum;
+                        bool flag3;
+                        do
+                        {
+                            Console.Write("Введите номер числа из ряда Фибоначчи: ");
+                            flag3 = int.TryParse(Console.ReadLine(), out number_value);
+
+                            if (flag3 && number_value > 0)
+                            {
+                                fibonnum = Fibon(number_value);
+
+                                Console.WriteLine($"{number_value} число из ряда Фибоначчи равно {fibonnum}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Вы ввели неверные данные");
+                            }
+                        } 
+                        while (!(flag3 && number_value > 0));
                         break;
                     case "break":
                         flag = false;
